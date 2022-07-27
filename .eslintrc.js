@@ -43,5 +43,6 @@ module.exports = {
     ],
     // single quoteでなくてもok
     quotes: ["off", "single"],
+    "import/no-unresolved": "off",
   },
 };
