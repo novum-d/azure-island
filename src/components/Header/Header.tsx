@@ -9,19 +9,16 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { SvgIcon } from "@mui/material";
-import { ReactComponent as Favicon } from "../../assets/key.svg";
+import { ReactComponent as Favicon } from "../../assets/favicon.svg";
 
-export default function PrimarySearchAppBar() {
+export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  React.useState<null | HTMLElement>(null);
-
   const isMenuOpen = Boolean(anchorEl);
 
-  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+  const onProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-
-  const handleMenuClose = () => {
+  const onMenuClose = () => {
     setAnchorEl(null);
   };
 
@@ -40,15 +37,15 @@ export default function PrimarySearchAppBar() {
         horizontal: "right",
       }}
       open={isMenuOpen}
-      onClose={handleMenuClose}
+      onClose={onMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={onMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={onMenuClose}>My account</MenuItem>
     </Menu>
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -56,30 +53,19 @@ export default function PrimarySearchAppBar() {
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            sx={{ mr: 2 }}
           >
             <MenuIcon />
           </IconButton>
-          <SvgIcon sx={{ fontSize: 50 }}>
+          <SvgIcon fontSize="medium" color="primary">
             <Favicon />
           </SvgIcon>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            MUI
-          </Typography>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Typography variant="h6">Azure Island</Typography>
+          <Box>
             <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              onClick={onProfileMenuOpen}
               color="inherit"
             >
               <AccountCircle />
