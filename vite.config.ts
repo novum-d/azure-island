@@ -17,5 +17,14 @@ export default defineConfig({
       localsConvention: "camelCase",
     },
   },
-  plugins: [react(), svgr()],
+  plugins: [
+    react({
+      jsxImportSource: "@emotion/react",
+    }),
+    svgr(),
+  ],
+  esbuild: {
+    jsxFactory: "jsx",
+    jsxInject: `import { jsx } from "@emotion/react"`,
+  },
 });
