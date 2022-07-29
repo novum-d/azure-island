@@ -10,6 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { SvgIcon } from "@mui/material";
 import { ReactComponent as Favicon } from "../../assets/favicon.svg";
+import styled from "./styles";
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -47,7 +48,7 @@ export default function Header() {
   return (
     <Box>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar css={styled.header}>
           <IconButton
             size="large"
             edge="start"
@@ -56,10 +57,12 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <SvgIcon fontSize="medium" color="primary">
-            <Favicon />
-          </SvgIcon>
-          <Typography variant="h6">Azure Island</Typography>
+          <div>
+            <SvgIcon fontSize="medium" color="primary">
+              <Favicon />
+            </SvgIcon>
+            <Typography variant="h6">Azure Island</Typography>
+          </div>
           <Box>
             <IconButton
               size="large"
