@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
+import Brightness from "@mui/icons-material/Brightness6";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { SvgIcon } from "@mui/material";
 import { ReactComponent as Favicon } from "../../assets/favicon.svg";
@@ -23,7 +24,6 @@ export default function Header() {
     setAnchorEl(null);
   };
 
-  const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -31,7 +31,6 @@ export default function Header() {
         vertical: "top",
         horizontal: "right",
       }}
-      id={menuId}
       keepMounted
       transformOrigin={{
         vertical: "top",
@@ -57,13 +56,20 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <div>
+          <Box>
             <SvgIcon fontSize="medium" color="primary">
               <Favicon />
             </SvgIcon>
-            <Typography variant="h6">Azure Island</Typography>
-          </div>
+            <Typography variant="h5">Azure Island</Typography>
+          </Box>
           <Box>
+            <IconButton
+              size="large"
+              aria-label="change brightness"
+              color="inherit"
+            >
+              <Brightness />
+            </IconButton>
             <IconButton
               size="large"
               edge="end"
