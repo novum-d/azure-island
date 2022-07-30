@@ -20,7 +20,7 @@ module.exports = {
       },
     },
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["react", "@typescript-eslint", "react-hooks"],
   rules: {
     // Reactのimportを必ず必要としない
     "react/jsx-uses-react": "off",
@@ -44,5 +44,14 @@ module.exports = {
     // single quoteでなくてもok
     quotes: ["off", "single"],
     "import/no-unresolved": "off",
+
+    // react hooks
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        additionalHooks: "(useRecoilCallback|useRecoilTransaction_UNSTABLE)",
+      },
+    ],
   },
 };
