@@ -13,10 +13,13 @@ import { SvgIcon } from "@mui/material";
 import { ReactComponent as Favicon } from "../../assets/favicon.svg";
 import styled from "./styles";
 
-export default function Header() {
+type HeaderProps = {
+  setExpand: () => void;
+};
+
+export default function Header({ setExpand }: HeaderProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const isMenuOpen = Boolean(anchorEl);
-
   const onProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -46,12 +49,13 @@ export default function Header() {
 
   return (
     <Box>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar css={styled.header}>
           <IconButton
             size="large"
             edge="start"
             color="inherit"
+            onClick={setExpand}
             aria-label="open drawer"
           >
             <MenuIcon />
