@@ -53,5 +53,8 @@ module.exports = {
         additionalHooks: "(useRecoilCallback|useRecoilTransaction_UNSTABLE)",
       },
     ],
+    "no-unused-vars": ["warn", { args: "after-used" }],
+    "react/no-unused-prop-types": ["warn"],
+    "no-shadow": "off",
   },
 };
