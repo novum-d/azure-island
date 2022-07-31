@@ -1,22 +1,18 @@
-import { css } from "@emotion/react";
 import { Box, Toolbar, Typography } from "@mui/material";
-import { useReducer } from "react";
+import React, { useReducer } from "react";
 import Header from "../components/Header/Header";
+import Main from "../components/Main/Main";
 import Navbar from "../components/Navbar/Navbar";
-import styled from "./styles";
+import styles from "./styles";
 
 function App() {
   const [open, setOpen] = useReducer((expand) => !expand, false);
   const drawerWidth = 13; // rem
-  const mainStyle = css`
-    ${!open && `margin-left: -${drawerWidth}rem`};
-    transition: margin-left 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-  `;
   return (
-    <Box css={styled.layout}>
+    <Box css={styles.layout}>
       <Header setExpand={setOpen} />
       <Navbar drawerRem={drawerWidth} expand={open} />
-      <div css={mainStyle}>
+      <Main open={open} drawerWidth={drawerWidth}>
         <Toolbar />
         <Typography paragraph>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -45,7 +41,7 @@ function App() {
           accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
           ultrices sagittis orci abody
         </Typography>
-      </div>
+      </Main>
     </Box>
   );
 }

@@ -11,7 +11,7 @@ import Brightness from "@mui/icons-material/Brightness6";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { SvgIcon } from "@mui/material";
 import { ReactComponent as Favicon } from "../../assets/favicon.svg";
-import styled from "./styles";
+import styles from "./styles";
 
 type HeaderProps = {
   setExpand: () => void;
@@ -50,7 +50,7 @@ export default function Header({ setExpand }: HeaderProps) {
   return (
     <Box>
       <AppBar position="fixed">
-        <Toolbar css={styled.header}>
+        <Toolbar css={styles.header}>
           <IconButton
             size="large"
             edge="start"

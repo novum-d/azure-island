@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-const styled = {
+const styles = {
   header: css`
     display: flex;
     justify-content: space-between;
@@ -17,4 +17,4 @@ const styled = {
   `,
 };
 
-export default styled;
+export default styles;

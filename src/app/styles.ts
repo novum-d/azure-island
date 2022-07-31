@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-const styled = {
+const styles = {
   layout: css`
     display: flex;
     > :nth-of-type(2) {
@@ -9,4 +9,4 @@ const styled = {
   `,
 };
 
-export default styled;
+export default styles;
