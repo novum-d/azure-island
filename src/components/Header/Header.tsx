@@ -15,9 +15,10 @@ import styles from "./styles";
 
 type HeaderProps = {
   setExpand: () => void;
+  setTheme: () => void;
 };
 
-export default function Header({ setExpand }: HeaderProps) {
+export default function Header({ setExpand, setTheme }: HeaderProps) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const isMenuOpen = Boolean(anchorEl);
   const onProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -69,8 +70,9 @@ export default function Header({ setExpand }: HeaderProps) {
           <Box>
             <IconButton
               size="large"
-              aria-label="change brightness"
               color="inherit"
+              onClick={setTheme}
+              aria-label="change brightness"
             >
               <Brightness />
             </IconButton>
