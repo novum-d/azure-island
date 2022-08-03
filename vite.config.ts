@@ -26,5 +26,6 @@ export default defineConfig({
   esbuild: {
     jsxFactory: "jsx",
     jsxInject: `import { jsx } from "@emotion/react"`,
+    logOverride: { "this-is-undefined-in-esm": "silent" },
   },
 });
