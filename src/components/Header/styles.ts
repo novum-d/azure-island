@@ -7,10 +7,11 @@ const styles = {
     > div {
       :first-of-type {
         display: flex;
-        margin-left: 20px;
+        align-items: center;
+        margin-left: 2rem;
         flex-grow: 1; // 残りの余白を埋める
         > :last-child {
-          margin-left: 10px;
+          margin-left: 0.5rem;
         }
       }
     }

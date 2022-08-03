@@ -34,6 +34,7 @@ const themes = {
         main: "#ffb4ab",
       },
     },
+    typography: AiTypography,
   }),
 };
 
