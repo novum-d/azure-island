@@ -56,5 +56,6 @@ module.exports = {
     "no-unused-vars": ["warn", { args: "after-used" }],
     "react/no-unused-prop-types": ["warn"],
     "no-shadow": "off",
+    "no-use-before-define": ["error", "nofunc"],
   },
 };
