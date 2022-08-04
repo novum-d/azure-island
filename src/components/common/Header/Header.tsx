@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Brightness from "@mui/icons-material/Brightness6";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { SvgIcon } from "@mui/material";
-import { ReactComponent as Favicon } from "../../assets/favicon.svg";
+import { ReactComponent as Favicon } from "../../../assets/favicon.svg";
 import styles from "./Header.styles";
 
 type HeaderProps = {
