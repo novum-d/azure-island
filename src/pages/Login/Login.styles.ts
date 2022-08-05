@@ -8,7 +8,7 @@ const styles = {
     margin-inline: auto;
     > div {
       > div {
-        // avater
+        // avatar
         margin-bottom: 2ch;
         margin-inline: auto;
       }
@@ -17,7 +17,7 @@ const styles = {
         margin-bottom: 1ch;
       }
       > p {
-        // discription
+        // description
         opacity: 0.8;
         margin-bottom: 2ch;
         text-align: center;

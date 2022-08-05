@@ -1,11 +1,14 @@
-import { CssBaseline, Box, ThemeProvider, Toolbar } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import React, { useReducer } from "react";
-import Header from "../components/common/Header/Header";
-import Main from "../components/common/Main/Main";
-import Navbar from "../components/common/Navbar/Navbar";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import useLocalTheme from "../hooks/useLocalTheme";
 import Login from "../pages/Login/Login";
-import styles from "./App.styles";
+import Home from "../components/Home/Home";
 
 export default function App() {
   const [open, setOpen] = useReducer((expand) => !expand, false);
@@ -14,34 +17,33 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Login />
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                open={open}
+                drawerWidth={drawerWidth}
+                setOpen={setOpen}
+                setTheme={setTheme}
+              />
+            }
+          >
+            <Route
+              path="services"
+              element={<div>Wellcome to azure island</div>}
+            />
+          </Route>
+          <Route
+            path="/home"
+            element={
+              // 引数にreplaceがある場合は「replace」, 無い場合は「push」
+              <Navigate to="/" />
+            }
+          />
+        </Routes>
+      </Router>
     </ThemeProvider>
-  );
-}
-
-type CommonScreenProps = {
-  open: boolean;
-  drawerWidth: number;
-  setOpen: () => void;
-  setTheme: () => void;
-  children: React.ReactNode;
-};
-
-function CommonLayout({
-  open,
-  drawerWidth,
-  setOpen,
-  setTheme,
-  children,
-}: CommonScreenProps) {
-  return (
-    <Box css={styles.layout}>
-      <Header setExpand={setOpen} setTheme={setTheme} />
-      <Navbar drawerRem={drawerWidth} expand={open} />
-      <Main open={open} drawerWidth={drawerWidth}>
-        <Toolbar />
-        {children}
-      </Main>
-    </Box>
   );
 }
