@@ -1,5 +1,4 @@
 import { Box, Toolbar } from "@mui/material";
-import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../common/Header/Header";
 import Main from "../common/Main/Main";

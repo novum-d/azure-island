@@ -19,11 +19,10 @@ const styles = {
       > p {
         // description
         opacity: 0.8;
-        margin-bottom: 2ch;
         text-align: center;
       }
-      button {
-        margin-top: 4ch;
+      + form > button {
+        margin-top: 3ch;
       }
     }
   `,

@@ -1,17 +1,19 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import React, { useReducer } from "react";
+
+import { useReducer } from "react";
 import {
   BrowserRouter as Router,
   Navigate,
   Route,
   Routes,
+  Outlet,
 } from "react-router-dom";
 import useLocalTheme from "../hooks/useLocalTheme";
-import Login from "../pages/Login/Login";
 import Home from "../components/Home/Home";
+import Login from "../pages/Login/Login";
 
 export default function App() {
-  const [open, setOpen] = useReducer((expand) => !expand, false);
+  const [open, setOpen] = useReducer((expand) => !expand, true);
   const drawerWidth = 13; // rem
   const [theme, setTheme] = useLocalTheme();
   return (
@@ -19,21 +21,21 @@ export default function App() {
       <CssBaseline />
       <Router>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                open={open}
-                drawerWidth={drawerWidth}
-                setOpen={setOpen}
-                setTheme={setTheme}
-              />
-            }
-          >
+          <Route path="/" element={<PrivateRoute />}>
             <Route
-              path="services"
-              element={<div>Wellcome to azure island</div>}
-            />
+              path="/"
+              element={
+                <Home
+                  open={open}
+                  drawerWidth={drawerWidth}
+                  setOpen={setOpen}
+                  setTheme={setTheme}
+                />
+              }
+            >
+              <Route index element={<Navigate to="island" />} />
+              <Route path="island" element={<div>welcome to island</div>} />
+            </Route>
           </Route>
           <Route
             path="/home"
@@ -42,8 +44,14 @@ export default function App() {
               <Navigate to="/" />
             }
           />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </ThemeProvider>
   );
+}
+
+function PrivateRoute() {
+  const auth = true;
+  return auth ? <Outlet /> : <Navigate to="/login" />;
 }
