@@ -21,9 +21,6 @@ const styles = {
         opacity: 0.8;
         text-align: center;
       }
-      + form > button {
-        margin-top: 3ch;
-      }
     }
   `,
 };
