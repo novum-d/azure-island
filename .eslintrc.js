@@ -57,5 +57,6 @@ module.exports = {
     "react/no-unused-prop-types": ["warn"],
     "no-shadow": "off",
     "no-use-before-define": ["error", "nofunc"],
+    "react/jsx-props-no-spreading": "off",
   },
 };
