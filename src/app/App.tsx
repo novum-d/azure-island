@@ -12,7 +12,7 @@ import useLocalTheme from "../hooks/useLocalTheme";
 import Home from "../components/Home/Home";
 import Login from "../pages/Login/Login";
 
-export default function App() {
+const App = () => {
   const [open, setOpen] = useReducer((expand) => !expand, true);
   const drawerWidth = 13; // rem
   const [theme, setTheme] = useLocalTheme();
@@ -49,9 +49,11 @@ export default function App() {
       </Router>
     </ThemeProvider>
   );
-}
+};
 
-function PrivateRoute() {
+const PrivateRoute = () => {
   const auth = true;
   return auth ? <Outlet /> : <Navigate to="/login" />;
-}
+};
+
+export default App;

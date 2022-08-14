@@ -18,7 +18,7 @@ type HeaderProps = {
   setTheme: () => void;
 };
 
-export default function Header({ setExpand, setTheme }: HeaderProps) {
+const Header = ({ setExpand, setTheme }: HeaderProps) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const isMenuOpen = Boolean(anchorEl);
   const onProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -91,4 +91,6 @@ export default function Header({ setExpand, setTheme }: HeaderProps) {
       {renderMenu}
     </Box>
   );
-}
+};
+
+export default Header;

@@ -8,19 +8,26 @@ const Login = () => (
   <Box>
     <Card variant="outlined" css={[styles.container]}>
       <CardContent>
-        <Avatar>
+        <Avatar css={styles.avatar}>
           <LockOutlined />
         </Avatar>
-        <Typography component="h1" variant="h5" css={cs.inlineCenter}>
+        <Typography
+          component="h1"
+          variant="h5"
+          css={[styles.title, cs.inlineCenter]}
+        >
           Azure Island へのログイン
         </Typography>
-        <Typography component="p" variant="inherit" css={[cs.inlineCenter]}>
-          学校で指定されたアカウントでログインして、
-          <br />
+        <Typography
+          component="p"
+          variant="inherit"
+          css={[styles.description, cs.inlineCenter]}
+        >
+          <span css={cs.br}>学校で指定されたアカウントでログインして、 </span>
           Azure Islandのサービスを利用しましょう。
         </Typography>
+        <Form />
       </CardContent>
-      <Form />
     </Card>
   </Box>
 );

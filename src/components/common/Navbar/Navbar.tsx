@@ -13,7 +13,7 @@ type NavbarProps = {
   expand: boolean;
 };
 
-export default function Navbar({ drawerRem, expand }: NavbarProps) {
+const Navbar = ({ drawerRem, expand }: NavbarProps) => {
   const styled = css`
     width: ${drawerRem}rem;
     flex-shrink: 0;
@@ -33,4 +33,6 @@ export default function Navbar({ drawerRem, expand }: NavbarProps) {
       </List>
     </Drawer>
   );
-}
+};
+
+export default Navbar;

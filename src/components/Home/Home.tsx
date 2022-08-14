@@ -12,17 +12,15 @@ type HomeProps = {
   setTheme: () => void;
 };
 
-function Home({ open, drawerWidth, setOpen, setTheme }: HomeProps) {
-  return (
-    <Box css={styles.layout}>
-      <Header setExpand={setOpen} setTheme={setTheme} />
-      <Navbar drawerRem={drawerWidth} expand={open} />
-      <Main open={open} drawerWidth={drawerWidth}>
-        <Toolbar />
-        <Outlet />
-      </Main>
-    </Box>
-  );
-}
+const Home = ({ open, drawerWidth, setOpen, setTheme }: HomeProps) => (
+  <Box css={styles.layout}>
+    <Header setExpand={setOpen} setTheme={setTheme} />
+    <Navbar drawerRem={drawerWidth} expand={open} />
+    <Main open={open} drawerWidth={drawerWidth}>
+      <Toolbar />
+      <Outlet />
+    </Main>
+  </Box>
+);
 
 export default Home;
