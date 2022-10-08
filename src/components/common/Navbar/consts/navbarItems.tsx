@@ -1,13 +1,13 @@
-import PersonIcon from "@mui/icons-material/Person";
 import AppsIcon from "@mui/icons-material/Apps";
 import SettingsIcon from "@mui/icons-material/Settings";
+import HomeIcon from "@mui/icons-material/Home";
 
-const navbarItems = [
+export const navbarItems = [
   {
     id: 0,
-    icon: <PersonIcon />,
-    label: "ポートフォリオ",
-    route: "authentication",
+    icon: <HomeIcon />,
+    label: "ホーム",
+    route: "home",
   },
   {
     id: 1,
@@ -22,5 +22,3 @@ const navbarItems = [
     route: "settings",
   },
 ];
-
-export default navbarItems;

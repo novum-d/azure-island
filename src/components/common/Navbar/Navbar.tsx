@@ -6,14 +6,14 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Toolbar } from "@mui/material";
 import { css } from "@emotion/react";
-import navbarItems from "./consts/navbarItems";
+import { navbarItems } from "./consts/navbarItems";
 
 type NavbarProps = {
   drawerRem: number;
   expand: boolean;
 };
 
-const Navbar = ({ drawerRem, expand }: NavbarProps) => {
+export const Navbar = ({ drawerRem, expand }: NavbarProps) => {
   const styled = css`
     width: ${drawerRem}rem;
     flex-shrink: 0;
@@ -35,4 +35,3 @@ const Navbar = ({ drawerRem, expand }: NavbarProps) => {
   );
 };
 
-export default Navbar;

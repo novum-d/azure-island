@@ -25,7 +25,7 @@ const validationRules = yup.object({
   password: yup.string().required("パスワードを入力してください"),
 });
 
-const Form = () => {
+export const Form = () => {
   const {
     register,
     handleSubmit,
@@ -95,5 +95,3 @@ const SubmitButton = styled(
   font-weight: bold;
   margin-top: 3ch;
 `;
-
-export default Form;
