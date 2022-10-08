@@ -1,6 +1,6 @@
-
-export const navRoutes ={
-    home: "/",
-    login: "/login",
-    island: "/island",
-}
+export const navRoutes = {
+  home: "/home",
+  login: "/login",
+  island: "/island",
+  settings: "/settings",
+};

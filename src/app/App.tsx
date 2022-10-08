@@ -1,59 +1,46 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { useReducer } from "react";
 import {
-  BrowserRouter as Router,
+  createBrowserRouter,
   Navigate,
-  Route,
-  Routes,
   Outlet,
+  RouterProvider,
 } from "react-router-dom";
 import { Common } from "../components/common/Comon";
-import useLocalTheme from "../hooks/useLocalTheme";
+import { Home } from "../components/Home/Home";
+import { useLocalTheme } from "../hooks/useLocalTheme";
 import Login from "../pages/Login/Login";
 import { navRoutes } from "./consts/navRoutes";
 
-const App = () => {
-  const [open, setOpen] = useReducer((expand) => !expand, true);
-  const drawerWidth = 13; // rem
+export const App = () => {
   const [theme, setTheme] = useLocalTheme();
+  const auth = true;
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
-        <Routes>
-          <Route path={navRoutes.home} element={<PrivateRoute />}>
-            {/* private routes */}
-            <Route
-              path={navRoutes.home}
-              element={
-                <Common
-                  open={open}
-                  drawerWidth={drawerWidth}
-                  setOpen={setOpen}
-                  setTheme={setTheme}
-                />
-              }
-            >
-              <Route index element={<Navigate to={navRoutes.island} />} />
-              <Route
-                path={navRoutes.island}
-                element={<div>welcome to island</div>}
-              />
-            </Route>
-          </Route>
-          {/* public routes */}
-          <Route path={navRoutes.login} element={<Login />} />
-        </Routes>
-      </Router>
+      <RouterProvider router={router(setTheme, auth)} />
     </ThemeProvider>
   );
 };
 
-const PrivateRoute = () => {
-  const auth = true;
-  // authentication ...
-  return auth ? <Outlet /> : <Navigate to={navRoutes.login} />;
-};
-
-export default App;
+const router = (setTheme: () => void, auth: boolean) =>
+  createBrowserRouter([
+    {
+      element: auth ? <Outlet /> : <Navigate to={navRoutes.login} />,
+      children: [
+        {
+          element: <Common setTheme={setTheme} />,
+          children: [
+            { path: navRoutes.home, element: <div>home</div> },
+            { path: navRoutes.island, element: <div>island</div> },
+            { path: navRoutes.settings, element: <div>settings</div> },
+          ],
+        },
+      ],
+    },
+    {
+      path: `${navRoutes.login}`,
+      element: auth ? <Navigate to={navRoutes.home} /> : <Login />,
+    },
+    { path: "*", element: <div>Not found</div> },
+  ]);

@@ -1,5 +1,14 @@
+import styled from "@emotion/styled";
 
-type HomeProps = {};
-
-export const Home = ({ }: HomeProps) => (
+export const Home = () => (
+  <HomeLayout>
+    <Title>hoge</Title>
+  </HomeLayout>
 );
+
+const HomeLayout = styled.div``;
+
+const Title = styled.h1`
+  font-size: 2.5rem;
+  font-weight: 700;
+`;

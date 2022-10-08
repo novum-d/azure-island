@@ -1,7 +1,7 @@
 import { LockOutlined } from "@mui/icons-material";
 import { Avatar, Box, Card, Typography, CardContent } from "@mui/material";
-import cs from "../../components/common/commonStyles";
-import {Form} from "../../components/Login/Form";
+import { cs } from "../../components/common/commonStyles";
+import { Form } from "../../components/Login/Form";
 import styles from "./Login.styles";
 
 const Login = () => (

@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import themes from "../theme/theme";
-import useLocalStorage from "./useLocalStorage";
+import { useLocalStorage } from "./useLocalStorage";
 
 const key = "theme";
 
-const useLocalTheme = () => {
+export const useLocalTheme = () => {
   const [mode, storeMode] = useLocalStorage(
     key,
     themes.lightTheme.palette.mode
@@ -20,5 +20,3 @@ const useLocalTheme = () => {
 
   return [theme, switchTheme] as const;
 };
-
-export default useLocalTheme;
