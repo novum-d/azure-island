@@ -9,4 +9,11 @@ export const cs = {
   br: css`
     display: block;
   `,
+  lhSmall: css`
+    display: block;
+    line-height: 3rem;
+  `,
+  fx: css`
+    display: flex;
+  `,
 };

@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 
-const styles = {
+export const styles = {
   container: css`
     width: clamp(46ch, 50%, 54ch);
     margin-top: 6ch;
@@ -19,5 +19,3 @@ const styles = {
     text-align: center;
   `,
 };
-
-export default styles;

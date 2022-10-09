@@ -1,6 +1,7 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createBrowserRouter, Navigate, Outlet, RouterProvider } from "react-router-dom";
 import { Common } from "../components/common/Comon";
+import { Home } from "../components/Home/Home";
 import { useLocalTheme } from "../hooks/useLocalTheme";
 import Login from "../pages/Login/Login";
 import { navRoutes } from "./consts/navRoutes";
@@ -29,7 +30,7 @@ const router = (setTheme: () => void, auth: boolean) =>
           element: <Common setTheme={setTheme} />,
           children: [
             { element: <Navigate to={navRoutes.home} />, index: true },
-            { path: navRoutes.home, element: <div>home</div> },
+            { path: navRoutes.home, element: <Home /> },
             { path: navRoutes.island, element: <div>island</div> },
             { path: navRoutes.settings, element: <div>settings</div> },
           ],
