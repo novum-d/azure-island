@@ -1,10 +1,10 @@
 import { LockOutlined } from "@mui/icons-material";
 import { Avatar, Box, Card, Typography, CardContent } from "@mui/material";
-import { cs } from "../../components/common/commonStyles";
+import { cs } from "../../style/commonStyles";
 import { Form } from "../../components/Login/Form";
 import { styles } from "./Login.styles";
 
-const Login = () => (
+export const LoginPage = ({ setAuth }: { setAuth: () => void }) => (
   <Box>
     <Card variant="outlined" css={[styles.container]}>
       <CardContent>
@@ -18,9 +18,8 @@ const Login = () => (
           <span css={cs.br}>学校で指定されたアカウントでログインして、 </span>
           Azure Islandのサービスを利用しましょう。
         </Typography>
-        <Form />
+        <Form setAuth={setAuth} />
       </CardContent>
     </Card>
   </Box>
 );
-export default Login;

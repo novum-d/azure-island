@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
 import { Button, Typography } from "@mui/material";
-import { cs } from "../common/commonStyles";
+import { IslandAnimation } from "../../components/Home/IslandAnimation";
+import { cs } from "../../style/commonStyles";
 
-export const Home = () => {
+export const HomePage = () => {
   const Layout = styled.div`
     margin-top: 1rem;
     margin-left: 2rem;
@@ -13,6 +14,10 @@ export const Home = () => {
       <Title />
       <TitleUnderline />
       <FirstAppDetail />
+      <div css={cs.fx}>
+        <IslandAnimation />
+        <img width={1000} src="../../../assets/look.png" alt="" />
+      </div>
     </Layout>
   );
 };
@@ -34,11 +39,11 @@ const TitleUnderline = styled.hr`
 `;
 
 const FirstAppDetail = () => {
-  const Container = styled.dt``;
+  const Container = styled.dl``;
 
   return (
     <Container>
-      <Typography css={cs.lhSmall} variant="h5" component="dl">
+      <Typography css={cs.lhSmall} variant="h5" component="dt">
         最初のアプリの作成
       </Typography>
       <Typography css={cs.lhSmall} variant="body1" component="dd">

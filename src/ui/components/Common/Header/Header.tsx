@@ -1,4 +1,3 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,7 +9,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Brightness from "@mui/icons-material/Brightness6";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { SvgIcon } from "@mui/material";
-import { ReactComponent as Favicon } from "../../../assets/favicon.svg";
+import { useState, MouseEvent } from "react";
+import { ReactComponent as Favicon } from "../../../../assets/favicon.svg";
 import styles from "./Header.styles";
 
 type HeaderProps = {
@@ -18,10 +18,10 @@ type HeaderProps = {
   setTheme: () => void;
 };
 
-const Header = ({ setExpand, setTheme }: HeaderProps) => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+export const Header = ({ setExpand, setTheme }: HeaderProps) => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const isMenuOpen = Boolean(anchorEl);
-  const onProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+  const onProfileMenuOpen = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const onMenuClose = () => {
@@ -52,13 +52,7 @@ const Header = ({ setExpand, setTheme }: HeaderProps) => {
     <Box>
       <AppBar position="fixed">
         <Toolbar css={styles.header}>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            onClick={setExpand}
-            aria-label="open drawer"
-          >
+          <IconButton size="large" edge="start" color="inherit" onClick={setExpand} aria-label="open drawer">
             <MenuIcon />
           </IconButton>
           <Box>
@@ -68,12 +62,7 @@ const Header = ({ setExpand, setTheme }: HeaderProps) => {
             <Typography variant="h5">Azure Island</Typography>
           </Box>
           <Box>
-            <IconButton
-              size="large"
-              color="inherit"
-              onClick={setTheme}
-              aria-label="change brightness"
-            >
+            <IconButton size="large" color="inherit" onClick={setTheme} aria-label="change brightness">
               <Brightness />
             </IconButton>
             <IconButton
@@ -92,5 +81,3 @@ const Header = ({ setExpand, setTheme }: HeaderProps) => {
     </Box>
   );
 };
-
-export default Header;

@@ -17,8 +17,7 @@ export const useLocalStorage = <T>(key: string, initialValue: T) => {
   // Return a wrapped useState's setter function that persists the new value to localStorage.
   const setValue = (value: T | ((val: T) => T)) => {
     try {
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
+      const valueToStore = value instanceof Function ? value(storedValue) : value;
       setStoredValue(valueToStore);
       if (typeof window !== "undefined") {
         window.localStorage.setItem(key, JSON.stringify(valueToStore));

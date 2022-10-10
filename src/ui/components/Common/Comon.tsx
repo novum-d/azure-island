@@ -2,9 +2,9 @@ import { Toolbar } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import styled from "@emotion/styled";
 import { useReducer } from "react";
-import Header from "./Header/Header";
+import { Header } from "./Header/Header";
 import { Navbar } from "./Navbar/Navbar";
-import Main from "./Main/Main";
+import { Main } from "./Main/Main";
 
 export type CommonProps = {
   setTheme: () => void;
