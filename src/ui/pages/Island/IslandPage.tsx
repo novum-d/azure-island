@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
 import { FixedSizeGrid as Grid, GridChildComponentProps } from "react-window";
 import { useRecoilValue } from "recoil";
-import AutoSizer, { AutoSizerProps } from "react-virtualized-auto-sizer";
-import React, { CSSProperties, ForwardedRef, forwardRef, RefObject, useEffect } from "react";
+import AutoSizer from "react-virtualized-auto-sizer";
+import { CSSProperties, ForwardedRef, forwardRef } from "react";
 import { islandList } from "../../../recoil/atoms/islandAtom";
 import { IslandProps } from "../../../model/Island";
 
@@ -58,10 +58,10 @@ const IslandCard = ({ data, rowIndex, columnIndex, style }: GridChildComponentPr
   const cell = data[rowIndex][columnIndex];
   const styles = {
     ...style,
-    left: style.left + GUTTER_SIZE,
-    top: style.top + GUTTER_SIZE,
-    width: style.width - GUTTER_SIZE,
-    height: style.height - GUTTER_SIZE,
+    left: style.left || 0 + GUTTER_SIZE,
+    top: style.top || 0 + GUTTER_SIZE,
+    width: style.width || 0 - GUTTER_SIZE,
+    height: style.height || 0 - GUTTER_SIZE,
   };
 
   const Avator = styled(({ className }: { className?: string | undefined }) => (
