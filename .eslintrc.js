@@ -74,5 +74,6 @@ module.exports = {
     "import/prefer-default-export": "off",
     "react/prop-types": "off",
     "react/require-default-props": "off",
+    "react/no-unused-prop-types": [] 
   },
 };

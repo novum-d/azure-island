@@ -1,20 +1,15 @@
 import { Box, Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
-import { SubmitHandler, useForm } from "react-hook-form";
-import * as yup from "yup";
+import { SubmitHandler, useForm, FieldErrors, UseFormRegister, FieldErrorsImpl } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "@emotion/styled";
-import { ReactNode } from "react";
+import { validationRules } from "./consts/velidationRules";
+import { SytledProps } from "../../../utils/StyledProps";
 
 type FormProps = {
   email: string;
   password: string;
   rememberMe: boolean;
 };
-
-const validationRules = yup.object({
-  email: yup.string().required("メールアドレスを入力してください").email("メールアドレスが正しくありません"),
-  password: yup.string().required("パスワードを入力してください"),
-});
 
 export const Form = ({ setAuth }: { setAuth: () => void }) => {
   const {
@@ -25,11 +20,29 @@ export const Form = ({ setAuth }: { setAuth: () => void }) => {
     resolver: yupResolver(validationRules),
   });
 
-  const onSubmit: SubmitHandler<FormProps> = (data) => {
-    // リクエスト処理
+  const submit: SubmitHandler<FormProps> = (data) => {
+    // request
     setAuth();
   };
+  return <FormContent onSubmit={handleSubmit(submit)} register={register} errors={errors} />;
+};
 
+type FormContentProps = {
+  onSubmit: () => void;
+  register: UseFormRegister<FormProps>;
+  errors: FieldErrors<FormProps>;
+};
+
+const FormContent = ({ register, errors, onSubmit }: FormContentProps) => {
+  const SubmitButton = styled(({ className, children }: SytledProps) => (
+    <Button type="submit" fullWidth variant="contained" className={className} onClick={onSubmit}>
+      {children}
+    </Button>
+  ))`
+    letter-spacing: 0.5rem;
+    font-weight: bold;
+    margin-top: 3ch;
+  `;
   return (
     <Box component="form">
       <TextField
@@ -54,23 +67,7 @@ export const Form = ({ setAuth }: { setAuth: () => void }) => {
         {...register("password")}
       />
       <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="ログインを保持する" />
-      <SubmitButton onClick={handleSubmit(onSubmit)}>ログイン</SubmitButton>
+      <SubmitButton>ログイン</SubmitButton>
     </Box>
   );
 };
-
-type SubmitButtonProps = {
-  className?: string;
-  onClick: () => void;
-  children: ReactNode;
-};
-
-const SubmitButton = styled(({ className, onClick, children }: SubmitButtonProps) => (
-  <Button type="submit" fullWidth variant="contained" className={className} onClick={onClick}>
-    {children}
-  </Button>
-))`
-  letter-spacing: 0.5rem;
-  font-weight: bold;
-  margin-top: 3ch;
-`;

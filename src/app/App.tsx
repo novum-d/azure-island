@@ -10,7 +10,7 @@ import { LoginPage } from "../ui/pages/Login/LoginPage";
 
 export const App = () => {
   const [theme, setTheme] = useLocalTheme();
-  const [auth, setAuth] = useReducer((auth) => !auth, false);
+  const [auth, setAuth] = useReducer((auth) => !auth, true);
 
   return (
     <ThemeProvider theme={theme}>
