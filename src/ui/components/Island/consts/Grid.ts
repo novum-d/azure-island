@@ -1,0 +1,9 @@
+
+export const Grid ={
+  GUTTER_SIZE: 50,
+  COLUMN_WIDTH: 280,
+  ROW_HEIGHT: 300,
+  COLUMN_COUNT: 5,
+  ROW_COUNT: 8
+};
+
