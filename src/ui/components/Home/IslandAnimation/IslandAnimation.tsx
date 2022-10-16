@@ -3,7 +3,7 @@ import { styles } from "./IslandAnimation.styles";
 export const IslandAnimation = () => (
   <svg width="600" height="350" viewBox="0 0 320 350" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clipPath="url(#clip0_300_525)">
-      <rect width="320" height="350" fill="white" />
+      <rect width="320" height="350" fill="none" />
       <g filter="url(#filter0_di_300_525)">
         <ellipse css={styles.island} cx="160" cy="295.462" rx="157" ry="46.6757" fill="#0060AB" />
         <path

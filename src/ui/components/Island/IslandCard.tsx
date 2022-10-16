@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
 import { GridChildComponentProps } from "react-window";
 import { IslandProps } from "../../../model/Island";
-import { SytledProps } from "../../../utils/StyledProps";
+import { SytledProps } from "../../../utils/types/StyledProps";
 import { Grid } from "./consts/Grid";
 
 export const IslandCard = ({ data, rowIndex, columnIndex, style }: GridChildComponentProps<IslandProps[][]>) => {
@@ -16,7 +16,7 @@ export const IslandCard = ({ data, rowIndex, columnIndex, style }: GridChildComp
   };
 
   const Avator = styled(({ className }: SytledProps) => (
-    <CardMedia className={className} component="img" image={cell.imageUrl} alt="green iguana" />
+    <CardMedia className={className} component="img" image={cell.imageUrl} alt={cell.name} />
   ))`
     height: 150px;
   `;

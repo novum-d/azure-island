@@ -8,6 +8,8 @@ import { Toolbar } from "@mui/material";
 import { css } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
 import { navbarItems } from "./consts/navbarItems";
+import styled from "@emotion/styled";
+import { SytledProps } from "../../../../utils/types/StyledProps";
 
 type NavbarProps = {
   drawerRem: number;
@@ -17,12 +19,17 @@ type NavbarProps = {
 export const Navbar = ({ drawerRem, expand }: NavbarProps) => {
   const navigate = useNavigate();
 
-  const layout = css`
+  const NavbarDrawer = styled(({ className, children }: SytledProps) => (
+    <Drawer className={className} variant="persistent" anchor="left" open={expand}>
+      {children}
+    </Drawer>
+  ))`
     width: ${drawerRem}rem;
     flex-shrink: 0;
   `;
+
   return (
-    <Drawer css={layout} variant="persistent" anchor="left" open={expand}>
+    <NavbarDrawer>
       <Toolbar />
       <List>
         {navbarItems.map((item) => (
@@ -34,6 +41,6 @@ export const Navbar = ({ drawerRem, expand }: NavbarProps) => {
           </ListItem>
         ))}
       </List>
-    </Drawer>
+    </NavbarDrawer>
   );
 };

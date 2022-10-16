@@ -3,15 +3,13 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Brightness from "@mui/icons-material/Brightness6";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { SvgIcon } from "@mui/material";
-import { useState, MouseEvent } from "react";
 import { ReactComponent as Favicon } from "../../../../assets/favicon.svg";
-import styles from "./Header.styles";
+import { SytledProps } from "../../../../utils/types/StyledProps";
+import styled from "@emotion/styled";
 
 type HeaderProps = {
   setExpand: () => void;
@@ -19,39 +17,26 @@ type HeaderProps = {
 };
 
 export const Header = ({ setExpand, setTheme }: HeaderProps) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const isMenuOpen = Boolean(anchorEl);
-  const onProfileMenuOpen = (event: MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const onMenuClose = () => {
-    setAnchorEl(null);
-  };
-
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMenuOpen}
-      onClose={onMenuClose}
-    >
-      <MenuItem onClick={onMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={onMenuClose}>My account</MenuItem>
-    </Menu>
-  );
+  const HeaderToolbar = styled(({ className, children }: SytledProps) => <Toolbar className={className}>{children}</Toolbar>)`
+    display: flex;
+    justify-content: space-between;
+    > div {
+      :first-of-type {
+        display: flex;
+        align-items: center;
+        margin-left: 2rem;
+        flex-grow: 1; // 残りの余白を埋める
+        > :last-child {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+  `;
 
   return (
     <Box>
       <AppBar position="fixed">
-        <Toolbar css={styles.header}>
+        <HeaderToolbar>
           <IconButton size="large" edge="start" color="inherit" onClick={setExpand} aria-label="open drawer">
             <MenuIcon />
           </IconButton>
@@ -65,19 +50,12 @@ export const Header = ({ setExpand, setTheme }: HeaderProps) => {
             <IconButton size="large" color="inherit" onClick={setTheme} aria-label="change brightness">
               <Brightness />
             </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              onClick={onProfileMenuOpen}
-              color="inherit"
-            >
+            <IconButton size="large" edge="end" aria-label="account of current user" color="inherit">
               <AccountCircle />
             </IconButton>
           </Box>
-        </Toolbar>
+        </HeaderToolbar>
       </AppBar>
-      {renderMenu}
     </Box>
   );
 };
