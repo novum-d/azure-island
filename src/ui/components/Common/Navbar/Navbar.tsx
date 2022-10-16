@@ -6,31 +6,41 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Toolbar } from "@mui/material";
 import { css } from "@emotion/react";
-import navbarItems from "./consts/navbarItems";
+import { useNavigate } from "react-router-dom";
+import { navbarItems } from "./consts/navbarItems";
+import styled from "@emotion/styled";
+import { SytledProps } from "../../../../utils/types/StyledProps";
 
 type NavbarProps = {
   drawerRem: number;
   expand: boolean;
 };
 
-export default function Navbar({ drawerRem, expand }: NavbarProps) {
-  const styled = css`
+export const Navbar = ({ drawerRem, expand }: NavbarProps) => {
+  const navigate = useNavigate();
+
+  const NavbarDrawer = styled(({ className, children }: SytledProps) => (
+    <Drawer className={className} variant="persistent" anchor="left" open={expand}>
+      {children}
+    </Drawer>
+  ))`
     width: ${drawerRem}rem;
     flex-shrink: 0;
   `;
+
   return (
-    <Drawer css={styled} variant="persistent" anchor="left" open={expand}>
+    <NavbarDrawer>
       <Toolbar />
       <List>
         {navbarItems.map((item) => (
-          <ListItem key={item.id} disablePadding>
-            <ListItemButton>
+          <ListItem key={item.id}>
+            <ListItemButton onClick={() => navigate(item.route)}>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.label} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-    </Drawer>
+    </NavbarDrawer>
   );
-}
+};

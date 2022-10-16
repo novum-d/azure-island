@@ -1,14 +1,11 @@
 import { useMemo } from "react";
-import themes from "../theme/theme";
-import useLocalStorage from "./useLocalStorage";
+import themes from "../ui/theme/theme";
+import { useLocalStorage } from "./useLocalStorage";
 
 const key = "theme";
 
-const useLocalTheme = () => {
-  const [mode, storeMode] = useLocalStorage(
-    key,
-    themes.lightTheme.palette.mode
-  );
+export const useLocalTheme = () => {
+  const [mode, storeMode] = useLocalStorage(key, themes.lightTheme.palette.mode);
 
   const theme = useMemo(() => {
     const lightMode = mode === "light";
@@ -20,5 +17,3 @@ const useLocalTheme = () => {
 
   return [theme, switchTheme] as const;
 };
-
-export default useLocalTheme;
